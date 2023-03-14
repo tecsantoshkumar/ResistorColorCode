@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en" class="wf-robotodisplayswap-n4-inactive wf-inactive">
+
+<head>
+    <meta charset="utf-8">
+    <title>LED Calculator - Current limiting resistor calculator for LED arrays</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="description" content="This LED calculator will help you calculate the resistor values you will need when designing a series/parallel LED array circuit.">
+    <meta name="keywords" content="Light-emitting diode, LED, Calculator, LED Calculator, Resistor Calculator, Calc, Current limiting, Resistor, LED Array, Series, Parallel, LED Light, circuit">
+    <meta property="og:title" content="LED Calculator - Current limiting resistor calculator for LED arrays">
+    <meta property="og:description" content="This LED calculator will help you calculate the resistor values you will need when designing a series/parallel LED array circuit.">
+    <link rel="stylesheet" href="led.css">
+</head>
+
+<body dir="ltr" aria-hidden="false" style="padding: 0px;">
+    <div class="container mt-2">
+        <div id="form" class="mt-2 mb-2">
+            <div class="row">
+                <div class="col-lg-5">
+                    <form>
+                        <div class="form-group">
+                            <label for="source-voltage">Power supply voltage (V):</label>
+                            <a id="po-source-voltage" role="button" tabindex="-1" data-trigger="focus" data-toggle="popover" data-placement="bottom" data-original-title="" title="">
+                                <svg class="fa-icon help">
+                                    <use xlink:href="/img/icons.svg#question-circle"></use>
+                                </svg>
+                            </a>
+                            <div id="po-source-voltage-content" class="d-none">
+                                <div id="po-source-voltage-content-body">
+                                    <ul class="unindent">
+                                        <li>The power source you are using to power up your LEDs (in Volts)
+                                            <table class="borders">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>AAA</td>
+                                                        <td>1.5V</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>AA</td>
+                                                        <td>1.5V</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>C</td>
+                                                        <td>1.5V</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>D</td>
+                                                        <td>1.5V</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>9 Volt</td>
+                                                        <td>9V</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>PC Power Supply</td>
+                                                        <td>5V (Red) and 12V (Yellow)</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </li>
+                                        <li>You can also combine two or more batteries in series and get the sum of their voltage</li>
+                                        <li>Make sure you are using a DC (direct current) power source such as batteries, wall transformers and PC power supplies</li>
+                                    </ul>
+                                </div>
+                            </div><input type="number" class="form-control" id="source-voltage" placeholder="3" value="3" min="0.1" step="0.01" required="" autofocus="">
+                        </div>
+                        <div class="form-group"><label for="forward-voltage">LED voltage drop (V):</label> <a id="po-forward-voltage" role="button" tabindex="-1" data-trigger="focus" data-toggle="popover" data-placement="bottom" data-original-title="" title=""><svg
+                                    class="fa-icon help">
+                                    <use xlink:href="/img/icons.svg#question-circle"></use>
+                                </svg></a>
+                            <div id="po-forward-voltage-content" class="d-none">
+                                <div id="po-forward-voltage-content-body">
+                                    <ul class="unindent">
+                                        <li>The amount of power needed, in Volts, for the LED to light properly. This value is usually provided by the manufacturer</li>
+                                        <li>Also known as <i>forward bias voltage</i> or just <i>forward voltage</i>
+                                        </li>
+                                        <li>If you are not sure of your LED voltage drop use this table for common 3mm or 5mm LEDs:<br>
+                                            <table class="borders">
+                                                <tbody>
+                                                    <tr style="color:#cc090e">
+                                                        <td>Infrared</td>
+                                                        <td>1.6V</td>
+                                                    </tr>
+                                                    <tr style="color:red">
+                                                        <td>Red</td>
+                                                        <td>1.8V to 2.1V</td>
+                                                    </tr>
+                                                    <tr style="color:orange">
+                                                        <td>Orange</td>
+                                                        <td>2.2V</td>
+                                                    </tr>
+                                                    <tr style="color:#ff3">
+                                                        <td>Yellow</td>
+                                                        <td>2.4V</td>
+                                                    </tr>
+                                                    <tr style="color:green">
+                                                        <td>Green</td>
+                                                        <td>2.6V</td>
+                                                    </tr>
+                                                    <tr style="color:#00f">
+                                                        <td>Blue</td>
+                                                        <td>3.0V to 3.5V</td>
+                                                    </tr>
+                                                    <tr style="color:gray">
+                                                        <td>White</td>
+                                                        <td>3.0V to 3.5V</td>
+                                                    </tr>
+                                                    <tr style="color:violet">
+                                                        <td>Ultraviolet</td>
+                                                        <td>3.5V</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><input type="number" class="form-control" id="forward-voltage" placeholder="1.8" value="1.8" min="0.1" step="0.01" required="">
+                        </div>
+                        <div class="form-group"><label for="forward-current">LED current rating (mA):</label> <a id="po-forward-current" role="button" tabindex="-1" data-trigger="focus" data-toggle="popover" data-placement="bottom" data-original-title="" title=""><svg
+                                    class="fa-icon help">
+                                    <use xlink:href="/img/icons.svg#question-circle"></use>
+                                </svg></a>
+                            <div id="po-forward-current-content" class="d-none">
+                                <div id="po-forward-current-content-body">
+                                    <ul class="unindent">
+                                        <li>The amount of current needed, in milliamps (mA), for the LED to light properly. This value is usually provided by the manufacturer</li>
+                                        <li>Also known as <i>forward current</i></li>
+                                        <li>If you are not sure of your LED current rating use 20mA for common LEDs</li>
+                                    </ul>
+                                </div>
+                            </div><input type="number" class="form-control" id="forward-current" placeholder="20" value="20" min="0.1" step="0.01" required="">
+                        </div>
+                        <div class="form-group"><label for="led-count">Number of LEDs:</label> <a id="po-led-count" role="button" tabindex="-1" data-trigger="focus" data-toggle="popover" data-placement="bottom" data-original-title="" title=""><svg class="fa-icon help">
+                                    <use xlink:href="/img/icons.svg#question-circle"></use>
+                                </svg></a>
+                            <div id="po-led-count-content" class="d-none">
+                                <div id="po-led-count-content-body">The number of LEDs in your array</div>
+                            </div><input type="number" class="form-control" id="led-count" placeholder="1" value="1" required="" min="1" max="1000" step="1">
+                        </div>
+                        <div class="form-group"><label for="output">Output:</label>
+                            <div class="form-check"><input class="form-check-input" type="radio" name="mode" id="mode1" value="wiring" checked="checked"> <label class="form-check-label" for="mode1">Wiring
+                                    Diagram</label></div>
+                            <div class="form-check"><input class="form-check-input" type="radio" name="mode" id="mode2" value="schematic"> <label class="form-check-label" for="mode2">Schematic</label>
+                            </div>
+                        </div>
+                        <div><button id="calculate" type="submit" class="btn btn-primary">Design Circuit</button>
+                            <div id="error" class="alert alert-danger alert-dismissible mt-2" style="display:none" role="alert"><span id="error-message">You need to increase your source voltage</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="container mt-3 mb-3">
+                <div id="circuit-container" class="">
+                    <div id="print-design" class="text-center pt-2 pb-2 d-none d-lg-block"><button id="print" type="submit" class="btn btn-primary">Print</button></div>
+                    <div id="circuit-input" class="mt-4 mb-4 text-center d-none">
+                        <ul>
+                            <li>Power supply voltage (V): <span id="input-source-voltage">3</span></li>
+                            <li>LED voltage drop (V): <span id="input-forward-voltage">1.8</span></li>
+                            <li>LED current rating (mA): <span id="input-forward-current">20</span></li>
+                            <li>Number of LEDs: <span id="input-led-count">1</span></li>
+                        </ul>
+                    </div>
+                    <div id="circuit" class="mt-4 mb-4 text-center">
+                        <svg id="SvgjsSvg1006" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" class="wiring" viewBox="0 0 600 100">
+                            <defs id="SvgjsDefs1007"></defs>
+                            <g id="SvgjsG1008" transform="matrix(1,0,0,1,0,0)"><text id="SvgjsText1009"
+                                    font-family="Helvetica, Arial, sans-serif" x="100" y="74" text-anchor="end"
+                                    anchor="end" class="terminal-text">+3V</text></g>
+                            <g id="SvgjsG1010" transform="matrix(1,0,0,1,100,0)">
+                                <line id="SvgjsLine1011" x1="20" y1="80" x2="100" y2="80" class="wire"></line>
+                                <circle id="SvgjsCircle1012" r="7" cx="20" cy="80" class="terminal"></circle>
+                            </g>
+                            <g id="SvgjsG1013" transform="matrix(1,0,0,1,200,0)">
+                                <path id="SvgjsPath1014"
+                                    d="M0 80 h 25 a10,10 1 0 0 10,-10 v -5 h 30 v 5 a10,10 1 0 0 10,10 h 25"
+                                    class="wire"></path>
+                                <line id="SvgjsLine1015" x1="20" y1="65" x2="75" y2="65" class="led"></line>
+                                <path id="SvgjsPath1016" d="M30 53 v -25 a20,20 1 0 1 20,-20 a20,20 0 0 1 20,20 v 25 Z"
+                                    class="led"></path>
+                                <line id="SvgjsLine1017" x1="5" y1="15" x2="25" y2="15" class="plus"></line>
+                                <line id="SvgjsLine1018" x1="15" y1="5" x2="15" y2="25" class="plus"></line>
+                                <line id="SvgjsLine1019" x1="75" y1="15" x2="95" y2="15" class="minus"></line>
+                            </g>
+                            <g id="SvgjsG1020" transform="matrix(1,0,0,1,300,0)">
+                                <line id="SvgjsLine1021" x1="0" y1="80" x2="100" y2="80" class="wire"></line>
+                                <g id="SvgjsG1022" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="62 ohm, 1/8 watt (Blue, Red, Black, Gold)">
+                                    <path id="SvgjsPath1023" d="M5 95 v -30 h 90 v 30 h -90" class="resistor four-band">
+                                    </path>
+                                    <path id="SvgjsPath1024" d="M15 95 v -30 h 10 v 30 h -10" class="band blue"></path>
+                                    <path id="SvgjsPath1025" d="M30 95 v -30 h 10 v 30 h -10" class="band red"></path>
+                                    <path id="SvgjsPath1026" d="M45 95 v -30 h 10 v 30 h -10" class="band black"></path>
+                                    <path id="SvgjsPath1027" d="M75 95 v -30 h 10 v 30 h -10" class="band gold"></path>
+                                </g>
+                                <text id="SvgjsText1028" font-family="Helvetica, Arial, sans-serif" x="50" y="40"
+                                    text-anchor="middle" anchor="middle" class="resistance-text">62Ω</text>
+                            </g>
+                            <g id="SvgjsG1029" transform="matrix(1,0,0,1,400,0)">
+                                <line id="SvgjsLine1030" x1="0" y1="80" x2="80" y2="80" class="wire"></line>
+                                <circle id="SvgjsCircle1031" r="7" cx="80" cy="80" class="terminal"></circle>
+                            </g>
+                            <g id="SvgjsG1032" transform="matrix(1,0,0,1,500,0)">
+                                <text id="SvgjsText1033" font-family="Helvetica, Arial, sans-serif" x="0" y="74"
+                                    text-anchor="start" anchor="start" class="terminal-text">GND</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div id="circuit-info" class="text-center">
+                <ul>
+                    <li>You will need 1 x 30 ohm 1/8 watt resistor.</li>
+                    <li>The 30 ohm resistor is color coded: Orange, Black, Black, Gold.</li>
+                    <li>Each 30 ohm resistor consumes 48 milliwatt.</li>
+                    <li>Total power consumed by the resistors is 48 milliwatt.</li>
+                    <li>Total power consumed by the LEDs is 72 milliwatt.</li>
+                    <li>Total power consumed by the circuit is 120 milliwatt.</li>
+                    <li>Total current drawn by the circuit is 40 milliampere.</li>
+                    <li>The resistor values are calculated based on the common ±5% tolerance resistors.</li>
+                    <li>Make sure to wire the LEDs in the correct direction as shown below.</li>
+                    <li>Always leave some space for the resistors to breathe. They might get hot.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.7.1/svg.min.js"></script>
+    <script async="" src="led.js"></script>
+    <script>
+        var i18n = [
+            ["black", "Black"],
+            ["brown", "Brown"],
+            ["red", "Red"],
+            ["orange", "Orange"],
+            ["yellow", "Yellow"],
+            ["green", "Green"],
+            ["blue", "Blue"],
+            ["violet", "Violet"],
+            ["gray", "Gray"],
+            ["white", "White"],
+            ["gold", "Gold"],
+            ["silver", "Silver"],
+            ["commonTolerance", "The resistor values are calculated based on the common ±5% tolerance resistors."],
+            ["makeSure", "Make sure to wire the LEDs in the correct direction as shown below."],
+            ["leaveSpace", "Always leave some space for the resistors to breathe. They might get hot."],
+            ["eachResistorConsumes", "Each {0} resistor consumes {1}."],
+            ["theResistorColorCoded", "The {0} resistor is color coded: {1}, {2}, {3}, {4}."],
+            ["totalCurrentDrawn", "Total current drawn by the circuit is {0}."],
+            ["totalPowerCircuit", "Total power consumed by the circuit is {0}."],
+            ["totalPowerLEDs", "Total power consumed by the LEDs is {0}."],
+            ["totalPowerResistors", "Total power consumed by the resistors is {0}."],
+            ["youWillNeed1", "You will need 1 x {0} {1} resistor."],
+            ["youWillNeed2", "You will need {0} x {1} {2} resistors."],
+            ["youWillNeed3", "You will need {0} x {1} {2} and 1 x {3} {4} resistors."],
+            ["milliampere", "milliampere"],
+            ["ampere", "ampere"],
+            ["megaampere", "megaampere"],
+            ["kiloampere", "kiloampere"],
+            ["ohm", "ohm"],
+            ["kiloohm", "kiloohm"],
+            ["megaohm", "megaohm"],
+            ["milliwatt", "milliwatt"],
+            ["watt", "watt"],
+            ["kilowatt", "kilowatt"],
+            ["megawatt", "megawatt"]
+        ]
+    </script>
+</body>
+
+</html>
